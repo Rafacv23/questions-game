@@ -1,10 +1,32 @@
-import React from "react"
+import React, { useState } from "react"
 import "./styles/App.css"
+import Start from "./pages/start"
+import { Route, Routes } from "react-router-dom"
+import NotFound from "./pages/not-found"
+import Game from "./pages/game"
 
 function App () {
+  const [playing, setPlaying] = useState(false)
+
+  const handlePlay = () => {
+    if (playing) {
+      setPlaying(false)
+    } else {
+      setPlaying(true)
+    }
+  }
+
   return (
     <>
-      Hello
+      <Routes>
+        {playing ? (
+          <Route path="/" element={<Game handlePlay={handlePlay} />} />
+        ) : (
+          <Route path="/" element={<Start handlePlay={handlePlay} />} />
+        )}
+        <Route path="/juego" element={<Game handlePlay={handlePlay} />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </>
   )
 }
