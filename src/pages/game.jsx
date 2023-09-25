@@ -27,13 +27,14 @@ const Game = ({ handlePlay }) => {
   const setDifficulty = () => {
     const easyQuestions = questions.filter((question) => question.pregunta.dificultad === 1)
     setEasy(easyQuestions)
-    console.log(easyQuestions)
 
     const mediumQuestions = questions.filter((question) => question.pregunta.dificultad === 2)
     setMedium(mediumQuestions)
+    console.log(mediumQuestions)
 
     const hardQuestions = questions.filter((question) => question.pregunta.dificultad === 3)
     setHard(hardQuestions)
+    console.log(hardQuestions)
   }
 
   const getQuestion = () => {

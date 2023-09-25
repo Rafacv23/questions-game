@@ -6,7 +6,7 @@ const Choices = ({ preguntaActual, nextRound }) => {
     <div className="choices-container">
       <ul>
         {preguntaActual && preguntaActual.respuestas.map((res) => (
-          <button className="choice" onClick={() => nextRound(res.id)} key={res.id}>{res.texto}</button>
+          <button className="button-choice" onClick={() => nextRound(res.id)} key={res.id}>{res.texto}</button>
         ))}
       </ul>
     </div>
