@@ -3,6 +3,7 @@ import Enunciado from "../containers/enunciado"
 import Choices from "../containers/choices"
 import Preguntas from "../data/questions.js"
 import Notification from "../components/notification"
+import Win from "./win"
 
 const Game = ({ handlePlay }) => {
   const [questions, setQuestions] = useState([])
@@ -38,7 +39,7 @@ const Game = ({ handlePlay }) => {
   }
 
   const getQuestion = () => {
-    if (round < 6 && round > 0) {
+    if (round <= 5 && round > 0) {
       const randomIndex = Math.floor(Math.random() * easy.length)
       const preguntaActual = easy[randomIndex]
       return preguntaActual
@@ -46,10 +47,12 @@ const Game = ({ handlePlay }) => {
       const randomIndex = Math.floor(Math.random() * medium.length)
       const preguntaActual = medium[randomIndex]
       return preguntaActual
-    } else if (round <= 20 && round >= 15) {
+    } else if (round >= 15 && round <= 20) {
       const randomIndex = Math.floor(Math.random() * hard.length)
       const preguntaActual = hard[randomIndex]
       return preguntaActual
+    } else {
+      return null
     }
   }
 
@@ -57,10 +60,11 @@ const Game = ({ handlePlay }) => {
     const respuestaSeleccionada = preguntaActual.respuestas.find(
       (respuesta) => respuesta.id === selectedAnswer
     )
+
     if (respuestaSeleccionada.correcta) {
       setIsCorrect(true)
       setRound(round + 1)
-      console.log("Correct")
+      console.log("Correcto")
       setNotification(true)
       setTimeout(() => {
         setNotification(false)
@@ -72,21 +76,32 @@ const Game = ({ handlePlay }) => {
       setNotification(true)
       setTimeout(() => {
         setNotification(false)
-      }, 3000)
+      }, 1000)
     }
   }
 
   return (
     <div>
-      <Enunciado round={round} preguntaActual={preguntaActual}></Enunciado>
-      <Choices
-        nextRound={nextRound}
-        round={round}
-        preguntaActual={preguntaActual}
-        questions={questions}
-        isCorrect={isCorrect}
-      ></Choices>
-      {notification ? <Notification className={isCorrect ? "notification" : "notification-error"} text={isCorrect ? "Acertaste" : "Fallaste"}/> : null}
+      {round > 20 ? (
+        <Win setRound={setRound} />
+      ) : (
+        <>
+          <Enunciado round={round} preguntaActual={preguntaActual}></Enunciado>
+          <Choices
+            nextRound={nextRound}
+            round={round}
+            preguntaActual={preguntaActual}
+            questions={questions}
+            isCorrect={isCorrect}
+          ></Choices>
+          {notification ? (
+            <Notification
+              className={isCorrect ? "notification" : "notification-error"}
+              text={isCorrect ? "Acertaste" : "Fallaste"}
+            />
+          ) : null}
+        </>
+      )}
     </div>
   )
 }

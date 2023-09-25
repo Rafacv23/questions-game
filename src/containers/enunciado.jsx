@@ -4,7 +4,7 @@ import "../styles/question.css"
 const Enunciado = ({ round, preguntaActual }) => {
   return (
     <div className="question-container">
-      <h4>Pregunta {round}</h4>
+      <h4>Pregunta {round}/20</h4>
       {preguntaActual && <h2>{preguntaActual.pregunta.enunciado}</h2>}
     </div>
   )
