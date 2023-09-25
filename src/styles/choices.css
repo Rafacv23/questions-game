@@ -1,0 +1,14 @@
+.choices-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #646cff;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: #0f0d25;
+}
+
+.choice{
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}

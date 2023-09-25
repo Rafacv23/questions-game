@@ -1,0 +1,11 @@
+.question-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 1rem;
+    align-items: center;
+    border: 1px solid #646cff;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: #0f0d25;
+}

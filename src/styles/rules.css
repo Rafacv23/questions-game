@@ -1,0 +1,7 @@
+.rules-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: justify;
+    align-items: start;
+}
