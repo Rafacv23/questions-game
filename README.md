@@ -1,8 +1,28 @@
-# React + Vite
+# Juego de Preguntas en React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es un juego de preguntas simple desarrollado en React utilizando Vite y React Router. El juego consta de 20 preguntas en total, y para cada pregunta, el jugador debe elegir la opción correcta de entre 4 opciones posibles.
 
-Currently, two official plugins are available:
+## Características
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Juego de 20 preguntas con múltiples opciones.
+- Utiliza React y React Router para la navegación entre preguntas.
+- Puntuación en tiempo real.
+- Pantalla de resultado al final del juego.
+
+## Capturas de Pantalla
+
+![Captura de Pantalla 1](/screenshots/screenshot1.png)
+## Instalación
+
+1. Clona este repositorio.
+
+    ```bash
+    git clone https://github.com/Rafacv23/questions-game.git
+    cd questions-game
+    npm install 
+    npm run dev
+    ```
+
+## Demo
+
+Puedes ver una demo en vivo de este proyecto [aquí](https://questions-game-iota.vercel.app/).
