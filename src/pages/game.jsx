@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import Enunciado from "../containers/enunciado"
 import Choices from "../containers/choices"
 import Preguntas from "../data/questions.js"
+import Notification from "../components/notification"
 
 const Game = ({ handlePlay }) => {
   const [questions, setQuestions] = useState([])
@@ -11,6 +12,7 @@ const Game = ({ handlePlay }) => {
   const [preguntaActual, setPreguntaActual] = useState(null)
   const [round, setRound] = useState(1)
   const [isCorrect, setIsCorrect] = useState(false)
+  const [notification, setNotification] = useState(false)
 
   useEffect(() => {
     setQuestions(Preguntas)
@@ -30,11 +32,9 @@ const Game = ({ handlePlay }) => {
 
     const mediumQuestions = questions.filter((question) => question.pregunta.dificultad === 2)
     setMedium(mediumQuestions)
-    console.log(mediumQuestions)
 
     const hardQuestions = questions.filter((question) => question.pregunta.dificultad === 3)
     setHard(hardQuestions)
-    console.log(hardQuestions)
   }
 
   const getQuestion = () => {
@@ -61,10 +61,18 @@ const Game = ({ handlePlay }) => {
       setIsCorrect(true)
       setRound(round + 1)
       console.log("Correct")
+      setNotification(true)
+      setTimeout(() => {
+        setNotification(false)
+      }, 5000)
     } else {
       setIsCorrect(false)
       handlePlay()
       console.log("Error")
+      setNotification(true)
+      setTimeout(() => {
+        setNotification(false)
+      }, 3000)
     }
   }
 
@@ -78,6 +86,7 @@ const Game = ({ handlePlay }) => {
         questions={questions}
         isCorrect={isCorrect}
       ></Choices>
+      {notification ? <Notification className={isCorrect ? "notification" : "notification-error"} text={isCorrect ? "Acertaste" : "Fallaste"}/> : null}
     </div>
   )
 }
