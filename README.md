@@ -11,7 +11,7 @@ Este proyecto es un juego de preguntas simple desarrollado en React utilizando V
 
 ## Capturas de Pantalla
 
-![Captura de Pantalla 1](/screenshots/screenshot1.png)
+![Captura de Pantalla 1](./src//media/quiz-video.gif)
 ## Instalación
 
 1. Clona este repositorio.
